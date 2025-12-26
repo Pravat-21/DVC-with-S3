@@ -20,10 +20,11 @@ jobs:
       run: |
         pip install -r requirements.txt
     
-    - name: dvc pull
-      env:
-        DAGSHUB_S3_KEY_ID: ${{ secrets.DAGSHUB_S3_KEY_ID }}
-        DAGSHUB_S3_SEC_ACCESS: ${{ secrets.DAGSHUB_S3_SEC_ACCESS }}
+    - name: Configure DVC remote credentials
+      run: |
+        dvc remote modify origin --local access_key_id ${{ secrets.DAGSHUB_S3_KEY_ID }}
+        dvc remote modify origin --local secret_access_key ${{ secrets.DAGSHUB_S3_SEC_ACCESS }}
+
+    - name: Pull data with DVC
       run: |
         dvc pull
-        
