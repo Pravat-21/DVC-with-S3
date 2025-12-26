@@ -28,3 +28,7 @@ jobs:
     - name: Pull data with DVC
       run: |
         dvc pull
+    
+    - name: DVC repro
+      run: |
+        dvc repro
