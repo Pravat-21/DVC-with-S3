@@ -1,0 +1,20 @@
+stages:
+  data_cleaning:
+
+    cmd: python data_cleaning.py
+    deps:
+    - data/raw
+    - data_cleaning.py
+    outs:
+    - data/clean
+
+  data_preprocessing:
+
+    cmd: python data_preprocessing.py
+    deps:
+    - data/clean
+    - data_preprocessing.py
+    outs:
+    - data/scale
+
+

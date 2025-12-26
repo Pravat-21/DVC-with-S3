@@ -1,0 +1,38 @@
+schema: '2.0'
+stages:
+  data_cleaning:
+    cmd: python data_cleaning.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: 561b787925898f54a1b6c6603fe5763d.dir
+      size: 32745
+      nfiles: 1
+    - path: data_cleaning.py
+      hash: md5
+      md5: 0297383e603a3be416ff85c7d4cc0c86
+      size: 756
+    outs:
+    - path: data/clean
+      hash: md5
+      md5: 6c6d87532e4ab0799319206ce7c51986.dir
+      size: 32781
+      nfiles: 2
+  data_preprocessing:
+    cmd: python data_preprocessing.py
+    deps:
+    - path: data/clean
+      hash: md5
+      md5: 6c6d87532e4ab0799319206ce7c51986.dir
+      size: 32781
+      nfiles: 2
+    - path: data_preprocessing.py
+      hash: md5
+      md5: e1e44a4c86591b1b745dcb7cd0bb7545
+      size: 937
+    outs:
+    - path: data/scale
+      hash: md5
+      md5: 4ef86541293d9ee2ea3a1332cf1ae892.dir
+      size: 98818
+      nfiles: 2
